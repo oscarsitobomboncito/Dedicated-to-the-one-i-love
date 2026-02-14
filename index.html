@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Be My Valentine? ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff9a9e, #fecfef);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    overflow: hidden;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+}
+
+h1 {
+    font-size: 28px;
+    color: white;
+    padding: 0 20px;
+}
+
+img {
+    width: 220px;
+    margin: 20px 0;
+}
+
+button {
+    padding: 12px 25px;
+    font-size: 18px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+    transition: 0.2s;
+}
+
+#yesBtn {
+    background: white;
+    color: #ff4d6d;
+    z-index: 2;
+}
+
+#noBtn {
+    background: #ff4d6d;
+    color: white;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Will you be my Valentine? ❤️</h1>
+
+    <!-- Puppy beggy eyes -->
+    <img src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif">
+
+    <br>
+
+    <button id="yesBtn" onclick="sayYes()">YESSSSSSS</button>
+    <button id="noBtn">nope</button>
+</div>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+
+let yesSize = 1;
+let noScale = 1;
+
+// Botón NO imposible
+function moveNoButton() {
+    const maxX = window.innerWidth - 100;
+    const maxY = window.innerHeight - 60;
+
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+
+    yesSize += 0.15;
+    yesBtn.style.transform = `scale(${yesSize})`;
+
+    noScale -= 0.05;
+    if (noScale > 0.4) {
+        noBtn.style.transform = `scale(${noScale})`;
+    }
+}
+
+// Desktop
+noBtn.addEventListener("mouseover", moveNoButton);
+
+// Mobile
+noBtn.addEventListener("touchstart", function(e) {
+    e.preventDefault();
+    moveNoButton();
+});
+
+// 🔥 AL PULSAR YES → ABRE PDF
+function sayYes() {
+    window.location.href = "SpecialMessageforYou.pdf";
+}
+</script>
+
+</body>
+</html>
